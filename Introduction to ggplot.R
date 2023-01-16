@@ -54,14 +54,16 @@ plt_price_vs_carat <- ggplot(
 plt_price_vs_carat + geom_point()
 
 # Edit this to make points 20% opaque: plt_price_vs_carat_transparent
-plt_price_vs_carat_transparent <- plt_price_vs_carat + geom_point(alpha=0.2)
+plt_price_vs_carat_transparent <- plt_price_vs_carat +
+  geom_point(alpha=0.2)
 
 # See the plot
 plt_price_vs_carat_transparent
 
 # Edit this to map color to clarity,
 # Assign the updated plot to a new object
-plt_price_vs_carat_by_clarity <- plt_price_vs_carat + geom_point(aes(color=clarity))
+plt_price_vs_carat_by_clarity <- plt_price_vs_carat +
+  geom_point(aes(color=clarity))
 
 # See the plot
 plt_price_vs_carat_by_clarity
@@ -116,3 +118,30 @@ ggplot(mtcars, aes(wt, mpg, color = cyl)) +
   # Add points layer with shape 24 and color yellow
   geom_point(shape = 24, color = "yellow")
 
+# Plot price vs. carat, colored by clarity
+plt_price_vs_carat_by_clarity <- ggplot(diamonds,
+                                      aes(carat, price, color = clarity))
+# Add a point layer with tiny points
+plt_price_vs_carat_by_clarity + geom_point(shape = ".", alpha = 0.5)
+
+# Update the point shape to remove the line outlines
+# by setting shape to 16.
+plt_price_vs_carat_by_clarity + geom_point(alpha = 0.5, shape = 16)
+
+# Plot mpg
+ggplot(mtcars, aes(mpg)) +
+  # Add a histogram layer
+  geom_histogram()
+
+# Set the binwidth to 1
+ggplot(mtcars, aes(mpg)) +
+  geom_histogram(binwidth = 1)
+
+# Map y to ..density..
+ggplot(mtcars, aes(mpg, y = ..density..)) +
+  geom_histogram(binwidth = 1)
+
+datacamp_light_blue <- "#51A8C9"
+ggplot(mtcars, aes(mpg, ..density..)) +
+  # Set the fill color to datacamp_light_blue
+  geom_histogram(binwidth = 1, fill = datacamp_light_blue)
