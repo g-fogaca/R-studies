@@ -62,3 +62,19 @@ ggplot(msleep, aes(bodywt, brainwt)) +
   geom_smooth(method = "lm", se = FALSE) +
   ggtitle("Scale functions")
   coord_trans(x = "log10", y = "log10")
+
+# Facet rows by am
+ggplot(mtcars, aes(wt, mpg)) + 
+  geom_point() +
+  facet_grid(rows = vars(am))
+
+# Facet columns by cyl
+ggplot(mtcars, aes(wt, mpg)) + 
+  geom_point() +
+  facet_grid(col = vars(cyl))
+
+# Facet rows by am and columns by cyl
+ggplot(mtcars, aes(wt, mpg)) + 
+  geom_point() +
+  facet_grid(rows = vars(am), col = vars(cyl))
+
